@@ -81,5 +81,5 @@
 (setq display-line-numbers-type 'relative)
 
 ;; activate rainbow mode for org documents and all programming modes
- (add-hook! org-mode 'rainbow-mode)
- (add-hook! prog-mode 'rainbow-mode)
+; (add-hook! org-mode 'rainbow-mode)
+; (add-hook! prog-mode 'rainbow-mode)
