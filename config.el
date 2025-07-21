@@ -78,6 +78,13 @@
 
 
 ;; AX
+
+; doom doctor suggestions
+(setq shell-file-name (executable-find "bash"))
+(setq-default vterm-shell "/usr/bin/fish")
+(setq-default explicit-shell-file-name "/usr/bin/fish")
+
+
 (setq display-line-numbers-type 'relative)
 
 ;; activate rainbow mode for org documents and all programming modes
