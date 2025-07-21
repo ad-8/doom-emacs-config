@@ -83,3 +83,40 @@
 ;; activate rainbow mode for org documents and all programming modes
 ; (add-hook! org-mode 'rainbow-mode)
 ; (add-hook! prog-mode 'rainbow-mode)
+
+
+(setenv "FZF_DEFAULT_COMMAND" "fd -u")
+;(use-package! fzf)
+(use-package! fzf
+  :bind
+    ;; Don't forget to set keybinds!
+  :config
+  (setq fzf/args "-x --color bw --print-query --margin=1,0 --no-hscroll"
+        fzf/executable "fzf"
+        fzf/git-grep-args "-i --line-number %s"
+        ;; command used for `fzf-grep-*` functions
+        ;; example usage for ripgrep:
+        ;; fzf/grep-command "rg --no-heading -nH"
+        fzf/grep-command "grep -nrH"
+        ;; If nil, the fzf buffer will appear at the top of the window
+        fzf/position-bottom t
+        fzf/window-height 35))
+
+
+(defun my-hello-message ()
+  (interactive)
+  (message "Hello World from Doom!"))
+
+
+(map! :leader
+      (:prefix-map ("j" . "ax custom binds")
+       (:prefix ("f" . "fzf")
+        :desc "Starts fzf session in dir" "f" #'fzf-directory)
+       (:prefix ("t" . "testing stuff")
+        :desc "hello world" "h" #'my-hello-message
+        :desc "print date" "d" #'my-run-date)))
+
+
+(defun my-run-date ()
+  (interactive)
+  (message "Date is: %s" (string-trim (shell-command-to-string "date +%F_%T"))))
