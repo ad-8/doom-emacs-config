@@ -120,3 +120,6 @@
 (defun my-run-date ()
   (interactive)
   (message "Date is: %s" (string-trim (shell-command-to-string "date +%F_%T"))))
+
+(after! org
+  (require 'ox-twbs))

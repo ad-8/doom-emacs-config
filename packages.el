@@ -50,4 +50,5 @@
 ;; (unpin! t)
 
 (package! fzf)
+(package! ox-twbs)
 (package! tldr)
